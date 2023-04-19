@@ -4,14 +4,13 @@ function getRandomHexColor() {
     .padStart(6, 0)}`
 }
 
-const btn = document.querySelector(".change-color")
-const span = document.querySelector(".color")
-const body = document.querySelector("body")
+const btn = document.querySelector(".change-color");
+const span = document.querySelector(".color");
+const body = document.body;
 
-btn.addEventListener("click", changeColor)
+btn.addEventListener("click", () => {
+  const color = getRandomHexColor()
+  span.textContent = color;
+  body.style.backgroundColor = color;
+});
 
-function changeColor() {
-  body.style.backgroundColor = getRandomHexColor()
-  span.textContent = body.style.backgroundColor
-  //span.textContent = getRandomHexColor(); ---- наче працює, але кольори не співпадають
-}
