@@ -1,13 +1,19 @@
-const textInput = document.getElementById("validation-input")
-const dataLength = textInput.getAttribute("data-length")
+const input = document.querySelector("#validation-input")
+const inputValueLength = input.getAttribute("data-length")
 
-textInput.addEventListener("blur", () => {
-  if (textInput.value.trim().length === Number(dataLength)) {
-    textInput.classList.add("valid")
-    textInput.classList.remove("invalid")
+input.addEventListener("blur", onInputBlur)
+
+function onInputBlur(event) {
+  const currentInputValueLength = event.currentTarget.value.length
+
+  if (currentInputValueLength === Number(inputValueLength)) {
+    addClasses(input, "valid", "invalid")
   } else {
-    textInput.classList.add("invalid")
-    textInput.classList.remove("valid")
+    addClasses(input, "invalid", "valid")
   }
-})
-console.log(dataLength)
+}
+
+function addClasses(element, classToAdd, classToRemove) {
+  element.classList.add(classToAdd)
+  element.classList.remove(classToRemove)
+}

@@ -14,7 +14,11 @@ const images = [
 ];
 const galleryEl = document.querySelector(".gallery")
 const makeGaleryItemEl = ({ url, alt }) => {
-  const galleryListEl = `<li class="item"> <img class="img" src="${url}" alt="${alt}" width="350" height="300"></li>`
-  galleryEl.insertAdjacentHTML("beforeend", galleryListEl)
+  return `<li class="item"> <img class="img" src="${url}" alt="${alt}" width="350" height="300"></li>`
+  
 }
-const galleryList = images.map(makeGaleryItemEl)
+const galleryList = images.map((image) => createImgElement(image)).join("")
+
+galeryEl.style.listStyleType = "none"
+
+galeryEl.insertAdjacentHTML("afterbegin", galleryList)
